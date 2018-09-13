@@ -1,0 +1,27 @@
+<div class="body">
+  <mat-card>
+    <div class="alert" *ngIf="errors">
+      {{errors | json}}
+    </div>
+    <form [formGroup]="loginForm" autocomplete="off" (submit)="signup()">
+      <mat-form-field>
+        <input type="text" formControlName="name" matInput placeholder="Foydalanuvchi ismi">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" formControlName="email" matInput placeholder="Email">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" formControlName="password" matInput placeholder="Parol">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" formControlName="c_password" matInput placeholder="Parolni tasdiqlash">
+      </mat-form-field>
+
+      <div class="mt-2">
+        <button mat-flat-button>Ro'yxatdan o'tish</button>
+        <a mat-button [routerLink]="['/login']">Kirish</a>
+      </div>
+    </form>
+  </mat-card>
+</div>
+

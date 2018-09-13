@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">My plans
+<span class="example-spacer"></span>
+  <button mat-icon-button (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>
+</mat-toolbar>
+<div class="container">
+  <div infiniteScroll [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+        (scrolled)="scroll()">
+    <mat-list>
+      <mat-list-item *ngIf="newPlan">
+        <mat-checkbox [(ngModel)]="newPlan.done">
+        </mat-checkbox>
+        <input type="text" [(ngModel)]="newPlan.name">
+        <span class="example-spacer"></span>
+        <mat-spinner [diameter]="20" *ngIf="newPlan.saving"></mat-spinner>
+        <button color="primary" mat-icon-button  (click)="save()">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button color="accent" mat-icon-button (click)="cancelAdd()">
+          <mat-icon>close</mat-icon>
+        </button>
+
+      </mat-list-item>
+      <mat-list-item *ngFor="let plan of plans" >
+        <mat-checkbox [(ngModel)]="plan.done" (change)="setStatus(plan)" >
+        </mat-checkbox>
+        <div style="margin-left: 10px" *ngIf="!plan.editable" [ngClass]="{'done': plan.done}" >
+          {{plan.name}}
+        </div>
+        <input type="text" *ngIf="plan.editable" [(ngModel)]="plan.name">
+        <span class="example-spacer"></span>
+        <mat-spinner [diameter]="20" *ngIf="plan.saving"></mat-spinner>
+        <button class="edit" color="warn" mat-icon-button *ngIf="!plan.editable" (click)="plan.editable = true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button color="primary" mat-icon-button *ngIf="plan.editable" (click)="change(plan)">
+          <mat-icon>save</mat-icon>
+        </button>
+        <button color="accent" mat-icon-button *ngIf="plan.editable" (click)="plan.editable = false">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button color="accent" class="edit" mat-icon-button  (click)="delete(plan)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <mat-spinner *ngIf="loading" class="load-items" [diameter]="40"></mat-spinner>
+</div>
+<button class="new" mat-fab color="primary" (click)="add()"><mat-icon>add</mat-icon></button>

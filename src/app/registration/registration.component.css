@@ -1,0 +1,20 @@
+.body mat-card{
+  max-width: 390px;
+  display: block;
+  margin: 100px auto;
+}
+mat-form-field{
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+}
+.mt-2{
+  margin-top: 2rem;
+}
+.alert{
+  overflow: auto;
+  background-color: #ff858e;
+  color: white;
+  padding: 10px 15px;
+  height: 100px;
+}

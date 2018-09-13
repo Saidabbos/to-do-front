@@ -1,0 +1,17 @@
+<div class="body">
+  <mat-card>
+      <form [formGroup]="loginForm" autocomplete="off" (submit)="signin()">
+        <mat-form-field>
+          <input type="text" formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" formControlName="password" matInput placeholder="Password">
+        </mat-form-field>
+        <div class="mt-2">
+          <button mat-flat-button>Kirish</button>
+          <a mat-button [routerLink]="['/registration']">Ro'yxatdan o'tish</a>
+        </div>
+      </form>
+  </mat-card>
+</div>
+

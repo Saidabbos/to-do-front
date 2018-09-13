@@ -1,0 +1,13 @@
+.body mat-card{
+  max-width: 390px;
+  display: block;
+  margin: 200px auto 0;
+}
+mat-form-field{
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+}
+.mt-2{
+  margin-top: 2rem;
+}
